@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/v1/auth/**
+        - id: project-service
+          uri: lb://project-service
+          predicates:
+            - Path=/api/v1/projects/**
+          filters:
+            - name: JwtAuthenticationFilter
+        - id: release-service
+          uri: lb://release-service
+          predicates:
+            - Path=/api/v1/releases/**
+          filters:
+            - name: JwtAuthenticationFilter
+        - id: analytics-service
+          uri: lb://analytics-service
+          predicates:
+            - Path=/api/v1/analytics/**
+          filters:
+            - name: JwtAuthenticationFilter
+        - id: audit-log-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/v1/audit-logs/**
+          filters:
+            - name: JwtAuthenticationFilter
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+app:
+  jwt:
+    secret: dGhpc2lzYW5leHRyZW1lbHlzZWN1cmVhbmRsb25nc2VjcmV0a2V5Zm9yZGV2dHJhY2thcHBsaWNhdGlvbnBsdXNleHRyYWNhcmFjdGVyc2ZvcmNvbXBsaWFuY2U=

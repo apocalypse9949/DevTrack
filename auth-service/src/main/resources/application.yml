@@ -1,0 +1,33 @@
+server:
+  port: 8081
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: auth-service
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/devtrack_auth_db
+    username: postgres
+    password: postgres_secure_pass
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+app:
+  jwt:
+    secret: dGhpc2lzYW5leHRyZW1lbHlzZWN1cmVhbmRsb25nc2VjcmV0a2V5Zm9yZGV2dHJhY2thcHBsaWNhdGlvbnBsdXNleHRyYWNhcmFjdGVyc2ZvcmNvbXBsaWFuY2U=
+    expiration-ms: 86400000 # 24 Hours

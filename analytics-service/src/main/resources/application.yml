@@ -1,0 +1,13 @@
+server:
+  port: 8084
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: analytics-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
