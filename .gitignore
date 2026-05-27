@@ -1,0 +1,24 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE specific files
+.idea/
+*.iws
+*.iml
+*.ipr
+.classpath
+.project
+.settings/
+.springBeans
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
